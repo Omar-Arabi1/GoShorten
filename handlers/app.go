@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 
+	"github.com/gin-gonic/gin"
 	_ "github.com/mattn/go-sqlite3"
 
 	"github.com/Omar-Arabi1/GoShorten/database"
@@ -15,7 +16,7 @@ type App struct {
 
 var ctx = context.Background()
 
-func Setup(dbName string) (*App, error) {
+func setupDbConnection(dbName string) (*App, error) {
 	db, err := sql.Open("sqlite3", dbName)
 	if err != nil {
 		return &App{}, err
@@ -33,4 +34,23 @@ func Setup(dbName string) (*App, error) {
 
 	queries := database.New(db)
 	return &App{Queries: queries}, nil
+}
+
+func New(dbName string) (*gin.Engine, error) {
+	_, err := setupDbConnection(dbName)
+	if err != nil {
+		return &gin.Engine{}, err
+	}
+
+	router := gin.Default()
+
+	// this first route is used to display the page where the user could shorten their url and a link
+	// to view all their urls pointing to route 3 here view_urls
+	router.GET("/", func(ctx *gin.Context) {})
+	router.POST("/shorten", func(ctx *gin.Context) {})
+	router.GET("/view_urls", func(ctx *gin.Context) {})
+	router.DELETE("/delete_url/:id", func(ctx *gin.Context) {})
+	router.PUT("/edit_url/:id", func(ctx *gin.Context) {})
+
+	return router, nil
 }
