@@ -37,16 +37,16 @@ func setupDbConnection(dbName string) (*App, error) {
 }
 
 func New(dbName string) (*gin.Engine, error) {
-	_, err := setupDbConnection(dbName)
+	app, err := setupDbConnection(dbName)
 	if err != nil {
 		return &gin.Engine{}, err
 	}
 
 	router := gin.Default()
-
+	router.LoadHTMLGlob("templates/*")
 	// this first route is used to display the page where the user could shorten their url and a link
 	// to view all their urls pointing to route 3 here view_urls
-	router.GET("/", func(ctx *gin.Context) {})
+	router.GET("/", app.Index)
 	router.POST("/shorten", func(ctx *gin.Context) {})
 	router.GET("/view_urls", func(ctx *gin.Context) {})
 	router.DELETE("/delete_url/:id", func(ctx *gin.Context) {})
