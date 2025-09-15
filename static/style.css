@@ -3,7 +3,7 @@
     --bright-pink-crayola: #ff556c66;
     --salmon-pink: #ff9aa8ff;
     --azure: #3884ffff;
-    --cornflower-blue: #5f9cffff;
+    --cornflower-blue: #5f9cff66;
     --jordy-blue: #a2c5ffff;
     --phlox: #d84bffff;
     --heliotrope: #de68ff66;
@@ -91,6 +91,10 @@ p {
     text-decoration: none;
 }
 
+.shorten-link {
+    margin-top: 5px;
+}
+
 #shortened-url {
     color: white;
     font-size: 25px;
@@ -98,6 +102,7 @@ p {
     margin-right: 8px;
     text-decoration: underline;
     font-weight: bold;
+    margin-bottom: 15px;
 }
 
 .short-url-container > #shortened-url {
@@ -131,25 +136,31 @@ p {
 
 ul {
     list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .short-url-container {
     display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .copy-button-container {
     display: flex;
+    flex-direction: row;
     justify-content: flex-end;
 }
 
-.url {
+li {
     border: 1px solid var(--dim-gray);
     border-radius: 5px;
     padding: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    width: fit-content;
+    min-width: 600px;
 }
 
 .delete-button {
@@ -158,7 +169,6 @@ ul {
     border: 1px solid var(--salmon-pink);
     font-size: 15px;
     padding: 7px;
-    margin-right: 10px;
     color: white;
     border-radius: 5px;
 }
@@ -170,4 +180,35 @@ ul {
 .shorten-link-container {
     display: flex;
     justify-content: center;
+}
+
+.updated-long-url {
+    padding: 5px;
+    margin-right: 5px;
+    border: 1px solid var(--dim-gray);
+    border-radius: 5px;
+    background-color: #24242466;
+    color: white;
+    font-size: 15px;
+}
+
+.updated-long-url:focus {
+    outline: none;
+}
+
+.edit-button {
+    background-color: var(--cornflower-blue);
+    border: 1px solid var(--jordy-blue);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.edit-button:hover {
+    cursor: pointer;
+}
+
+.empty-message {
+    text-align: center;
+    margin-bottom: 10px;
 }

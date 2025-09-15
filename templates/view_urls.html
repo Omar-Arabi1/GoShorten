@@ -26,54 +26,56 @@
     <body>
         <h1>Your URLs</h1>
         <div class="urls-container">
+            {{ if . }}
             <ul class="urls">
                 {{ range . }}
                 <li>
-                    <div class="url">
-                        <div class="short-url-container">
-                            <button
-                                class="delete-button"
-                                hx-delete="/delete_url/{{ .ID }}"
-                                hx-target="body"
-                                hx-swap="outerHTML"
-                            >
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                            <a
-                                href="{{ .LongUrl.String }}"
-                                target="_blank"
-                                id="shortened-url"
-                            >
-                                http://localhost:8080/short/{{
-                                .ShortenedUrlKey.String }}
-                            </a>
-                            <div class="copy-button-container">
-                                <button
-                                    class="copy-button"
-                                    onclick="copyText()"
-                                >
-                                    <i class="fa-solid fa-copy"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <p>long url: {{ .LongUrl.String }}</p>
-                        <!--<form
-                            class="update"
-                            hx-put="/edit_url/{{ .ID }}"
+                    <div class="short-url-container">
+                        <button
+                            class="delete-button"
+                            hx-delete="/delete_url/{{ .ID }}"
                             hx-target="body"
                             hx-swap="outerHTML"
                         >
-                            <input
-                                name="updated-long-url"
-                                placeholder="update long URL"
-                            />
-                            <button class="edit-button">edit</button>
-                        </form>-->
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                        <a
+                            href="{{ .LongUrl.String }}"
+                            target="_blank"
+                            id="shortened-url"
+                        >
+                            http://localhost:8080/short/{{
+                            .ShortenedUrlKey.String }}
+                        </a>
+                        <div class="copy-button-container">
+                            <button class="copy-button" onclick="copyText()">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
+                        </div>
                     </div>
+                    <p>long url: {{ .LongUrl.String }}</p>
+                    <form
+                        class="update"
+                        hx-put="/edit_url/{{ .ID }}"
+                        hx-target="body"
+                        hx-swap="outerHTML"
+                    >
+                        <input
+                            class="updated-long-url"
+                            name="updated-long-url"
+                            placeholder="update long URL"
+                        />
+                        <button class="edit-button">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                    </form>
                 </li>
                 {{ end }}
             </ul>
         </div>
+        {{ else }}
+        <p class="empty-message">you don't have any shortened urls yet</p>
+        {{ end }}
         <div class="shorten-link-container">
             <a class="shorten-link" href="/"
                 >Shorten Another Url <i class="fa-solid fa-arrow-left"></i
