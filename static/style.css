@@ -1,6 +1,6 @@
 :root {
     --imperial-red: #ff203eff;
-    --bright-pink-crayola: #ff556cff;
+    --bright-pink-crayola: #ff556c66;
     --salmon-pink: #ff9aa8ff;
     --azure: #3884ffff;
     --cornflower-blue: #5f9cffff;
@@ -79,7 +79,8 @@ p {
     justify-content: center;
 }
 
-.view-urls-button {
+.view-urls-button,
+.shorten-link {
     margin-top: 15px;
     background-color: #c3ffb866;
     color: white;
@@ -99,6 +100,10 @@ p {
     font-weight: bold;
 }
 
+.short-url-container > #shortened-url {
+    margin-right: auto;
+}
+
 .short-url {
     margin-top: 20px;
 }
@@ -114,6 +119,55 @@ p {
     color: white;
 }
 
+.short-url-container > #shortened-url,
+.copy-button-container > .copy-button,
+.delete-button {
+    margin-top: 5px;
+}
+
 .copy-button:hover {
     cursor: copy;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.short-url-container {
+    display: flex;
+}
+
+.copy-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.url {
+    border: 1px solid var(--dim-gray);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.delete-button {
+    height: fit-content;
+    background-color: var(--bright-pink-crayola);
+    border: 1px solid var(--salmon-pink);
+    font-size: 15px;
+    padding: 7px;
+    margin-right: 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+.delete-button:hover {
+    cursor: pointer;
+}
+
+.shorten-link-container {
+    display: flex;
+    justify-content: center;
 }

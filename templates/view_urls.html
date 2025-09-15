@@ -3,19 +3,61 @@
     <head>
         <meta charset="UTF-8" />
         <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.7/dist/htmx.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Epunda+Sans:ital,wght@0,300..900;1,300..900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Epunda+Sans:ital,wght@0,300..900;1,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        />
+        <link rel="stylesheet" href="../static/style.css" />
+        <script src="../static/index.js"></script>
         <title>GoShorten</title>
     </head>
     <body>
+        <h1>Your URLs</h1>
         <div class="urls-container">
             <ul class="urls">
                 {{ range . }}
                 <li>
                     <div class="url">
-                        <p>
-                            http://localhost:8080/short/{{ .ShortenedUrlKey.String }}
-                        </p>
-                        <p>{{ .LongUrl.String }}</p>
-                        <form
+                        <div class="short-url-container">
+                            <button
+                                class="delete-button"
+                                hx-delete="/delete_url/{{ .ID }}"
+                                hx-target="body"
+                                hx-swap="outerHTML"
+                            >
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                            <a
+                                href="{{ .LongUrl.String }}"
+                                target="_blank"
+                                id="shortened-url"
+                            >
+                                http://localhost:8080/short/{{
+                                .ShortenedUrlKey.String }}
+                            </a>
+                            <div class="copy-button-container">
+                                <button
+                                    class="copy-button"
+                                    onclick="copyText()"
+                                >
+                                    <i class="fa-solid fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <p>long url: {{ .LongUrl.String }}</p>
+                        <!--<form
                             class="update"
                             hx-put="/edit_url/{{ .ID }}"
                             hx-target="body"
@@ -26,21 +68,16 @@
                                 placeholder="update long URL"
                             />
                             <button class="edit-button">edit</button>
-                        </form>
-                        <button class="copy-button">Copy</button>
-                        <button
-                            class="delete-button"
-                            hx-delete="/delete_url/{{ .ID }}"
-                            hx-target="body"
-                            hx-swap="outerHTML"
-                        >
-                            Delete
-                        </button>
+                        </form>-->
                     </div>
                 </li>
                 {{ end }}
             </ul>
         </div>
-        <a href="/">Shorten Another Url</a>
+        <div class="shorten-link-container">
+            <a class="shorten-link" href="/"
+                >Shorten Another Url <i class="fa-solid fa-arrow-left"></i
+            ></a>
+        </div>
     </body>
 </html>
