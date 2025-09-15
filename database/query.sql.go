@@ -61,6 +61,17 @@ func (q *Queries) GetUrls(ctx context.Context) ([]Url, error) {
 	return items, nil
 }
 
+const queryUrlByShortUrl = `-- name: QueryUrlByShortUrl :one
+SELECT id, long_url, shortened_url_key FROM urls WHERE shortened_url_key = ?
+`
+
+func (q *Queries) QueryUrlByShortUrl(ctx context.Context, shortenedUrlKey sql.NullString) (Url, error) {
+	row := q.db.QueryRowContext(ctx, queryUrlByShortUrl, shortenedUrlKey)
+	var i Url
+	err := row.Scan(&i.ID, &i.LongUrl, &i.ShortenedUrlKey)
+	return i, err
+}
+
 const updateUrl = `-- name: UpdateUrl :exec
 UPDATE urls SET long_url = ? WHERE id = ?
 `

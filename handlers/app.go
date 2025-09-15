@@ -47,5 +47,8 @@ func New(dbName string, schema string) (*gin.Engine, error) {
 	router.DELETE("/delete_url/:id", app.Delete)
 	router.PUT("/edit_url/:id", app.Edit)
 
+	// this endpoint will be the endpoint that will redirect the user when they use the generated shortened url
+	router.GET("/short/:shortUrlKey", app.Short)
+
 	return router, nil
 }

@@ -9,3 +9,6 @@ UPDATE urls SET long_url = ? WHERE id = ?;
 
 -- name: DeleteUrl :exec
 DELETE FROM urls WHERE id = ?;
+
+-- name: QueryUrlByShortUrl :one
+SELECT * FROM urls WHERE shortened_url_key = ?;
