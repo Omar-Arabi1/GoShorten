@@ -14,10 +14,11 @@
                 hx-target="body"
             >
                 <p>Long URL</p>
-                <input class="long-url" />
+                <input class="long-url" name="long-url" />
                 <button class="shorten-button">Shorten</button>
             </form>
         </div>
+        <p>{{ . }}</p>
         <a href="/view_urls">view all your urls</a>
     </body>
 </html>

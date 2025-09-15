@@ -22,6 +22,7 @@ func setupDbConnection(dbName string, schema string) (*App, error) {
 		return &App{}, err
 	}
 
+	// schema variable here comes from the main.go file
 	if _, err = db.ExecContext(ctx, schema); err != nil {
 		return &App{}, err
 	}
@@ -41,7 +42,7 @@ func New(dbName string, schema string) (*gin.Engine, error) {
 	// this first route is used to display the page where the user could shorten their url and a link
 	// to view all their urls pointing to route 3 here view_urls
 	router.GET("/", app.Index)
-	router.POST("/shorten", func(ctx *gin.Context) {})
+	router.POST("/shorten", app.Shorten)
 	router.GET("/view_urls", app.ViewUrls)
 	router.DELETE("/delete_url/:id", func(ctx *gin.Context) {})
 	router.PUT("/edit_url/:id", func(ctx *gin.Context) {})

@@ -11,8 +11,10 @@
                 {{ range . }}
                 <li>
                     <div class="url">
-                        <p>http://localhost:8080/{{ .ShortenedUrlKey }}</p>
-                        <p>{{ .LongUrl }}</p>
+                        <p>
+                            http://localhost:8080/{{ .ShortenedUrlKey.String }}
+                        </p>
+                        <p>{{ .LongUrl.String }}</p>
                     </div>
                 </li>
                 {{ end }}

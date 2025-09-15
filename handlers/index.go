@@ -7,5 +7,6 @@ import (
 )
 
 func (a *App) Index(c *gin.Context) {
-	c.HTML(http.StatusOK, "index.html", nil)
+	shortUrlKey := c.Query("shortUrlKey")
+	c.HTML(http.StatusOK, "index.html", shortUrlKey)
 }
