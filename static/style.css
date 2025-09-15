@@ -5,14 +5,115 @@
     --azure: #3884ffff;
     --cornflower-blue: #5f9cffff;
     --jordy-blue: #a2c5ffff;
+    --phlox: #d84bffff;
+    --heliotrope: #de68ff66;
+    --violet-web-color: #e998ffff;
     --screamin-green: #9bff8aff;
     --tea-green: #c3ffb8ff;
     --tea-green-2: #dbffd4ff;
     --icterine: #fff75cff;
     --icterine-2: #fff981ff;
     --cream: #fffcbdff;
+    --princeton-orange: #ff9721ff;
+    --orange-peel: #ffa94766;
+    --earth-yellow: #ffb560ff;
+    --jet: #131313ff;
     --eerie-black: #242424ff;
-    --jet: #323232ff;
     --dim-gray: #636363ff;
 }
 
+* {
+    font-family: "Roboto", "Epunda Sans";
+}
+
+body {
+    background-color: var(--jet);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    color: white;
+}
+
+p {
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-top: 3px;
+    color: var(--dim-gray);
+}
+
+.long-url {
+    padding: 10px;
+    padding-left: 40px;
+    margin-right: 5px;
+    border: 1px solid var(--dim-gray);
+    border-radius: 5px;
+    background-color: #24242466;
+    color: white;
+    font-size: 15px;
+}
+
+.shorten-button {
+    padding: 10px;
+    border: 1px solid var(--earth-yellow);
+    border-radius: 5px;
+    background-color: var(--orange-peel);
+    color: white;
+    font-size: 15px;
+}
+
+.shorten-button:hover {
+    cursor: pointer;
+}
+
+.long-url:focus {
+    outline: none;
+}
+
+.shorten-url,
+.short-url,
+.view-urls-link {
+    display: flex;
+    justify-content: center;
+}
+
+.view-urls-button {
+    margin-top: 15px;
+    background-color: #c3ffb866;
+    color: white;
+    border: 1px solid var(--tea-green-2);
+    width: fit-content;
+    padding: 8px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+#shortened-url {
+    color: white;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-right: 8px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.short-url {
+    margin-top: 20px;
+}
+
+.copy-button {
+    padding: 8px;
+    margin-top: 16px;
+    height: fit-content;
+    font-size: 15px;
+    background-color: var(--heliotrope);
+    border: 1px solid var(--violet-web-color);
+    border-radius: 5px;
+    color: white;
+}
+
+.copy-button:hover {
+    cursor: copy;
+}
