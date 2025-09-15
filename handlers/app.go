@@ -44,7 +44,7 @@ func New(dbName string, schema string) (*gin.Engine, error) {
 	router.GET("/", app.Index)
 	router.POST("/shorten", app.Shorten)
 	router.GET("/view_urls", app.ViewUrls)
-	router.DELETE("/delete_url/:id", func(ctx *gin.Context) {})
+	router.DELETE("/delete_url/:id", app.Delete)
 	router.PUT("/edit_url/:id", func(ctx *gin.Context) {})
 
 	return router, nil

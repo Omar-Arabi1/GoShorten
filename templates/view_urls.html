@@ -14,7 +14,16 @@
                         <p>
                             http://localhost:8080/{{ .ShortenedUrlKey.String }}
                         </p>
+                        <button class="copy-button">Copy</button>
                         <p>{{ .LongUrl.String }}</p>
+                        <button
+                            class="delete-button"
+                            hx-delete="/delete_url/{{ .ID }}"
+                            hx-target="body"
+                            hx-swap="outerHTML"
+                        >
+                            Delete
+                        </button>
                     </div>
                 </li>
                 {{ end }}

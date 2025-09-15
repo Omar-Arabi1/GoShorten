@@ -2,7 +2,6 @@ package utils
 
 import (
 	"encoding/base64"
-	"fmt"
 	"math/rand"
 )
 
@@ -13,6 +12,5 @@ func ShortenUrl(longUrl string) string {
 		randIndex := rand.Intn(5)
 		shortUrlKey += string(longShortUrlKey[randIndex])
 	}
-	fmt.Println(shortUrlKey)
 	return shortUrlKey
 }
