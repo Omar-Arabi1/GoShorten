@@ -3,6 +3,7 @@ package handlers
 import (
 	"context"
 	"database/sql"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/mattn/go-sqlite3"
@@ -39,6 +40,7 @@ func New(dbName string, schema string) (*gin.Engine, error) {
 
 	router := gin.Default()
 	router.LoadHTMLGlob("templates/*")
+	router.StaticFS("/static", http.Dir("static"))
 	// this first route is used to display the page where the user could shorten their url and a link
 	// to view all their urls pointing to route 3 here view_urls
 	router.GET("/", app.Index)
